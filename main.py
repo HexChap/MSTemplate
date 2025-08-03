@@ -10,13 +10,4 @@ application = FastAPI(
     title="TemplateMicroservice",
 )
 
-setup_app(
-    application,
-    db_url,
-    Path("app") / "routers",
-    ["app.models"]
-)
-
-
-if __name__ == "__main__":
-    uvicorn.run("main:application", port=8000, reload=True)
+tortoise_conf = setup_app(application, db_url, Path("app") / "routers", ["app.models"])
